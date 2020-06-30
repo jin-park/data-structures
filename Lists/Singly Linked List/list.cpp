@@ -36,26 +36,17 @@ void List<T>::_makeNode(T data)
 template <class T>
 void List<T>::_append(Nptr& Ptr, Nptr node)
 {
-//     if (!head)
-//     {
-//         Ptr = node;
-//         return;
-//     }
-//     else if (Ptr->next == NULL)
-//     {
-//         Ptr->next = node;
-//         return;
-//     }
-//     _append(Ptr->next, node);
     if (!head)
     {
         Ptr = node;
+        return;
     }
-    while (Ptr->next)
+    else if (Ptr->next == NULL)
     {
-        Ptr = Ptr->next;
+        Ptr->next = node;
+        return;
     }
-    Ptr->next = node;
+    _append(Ptr->next, node);
 }
 
 template <class T>
@@ -71,4 +62,16 @@ void List<T>::_makeNode(T data, int index)
 }
 
 template <class T>
-void List<T>::_insert(Nptr& Ptr, Nptr node, int index) {}
+void List<T>::_insert(Nptr& Ptr, Nptr node, int count) 
+{
+    if (count == 0 && Ptr == head) { node->next = Ptr; Ptr = node; return; }
+    else if (count == 0) 
+    {
+        node->next = Ptr->next;
+        Ptr->next = node;
+        return;
+    }
+    else { 
+        _insert(Ptr->next, node, count - 1);
+    }
+}
