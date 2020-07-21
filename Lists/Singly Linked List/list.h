@@ -5,31 +5,38 @@ template <class T>
 class List 
 {
     typedef struct Node 
-    {
+    { 
         Node *next;
         T data;
     } *Nptr;
 
     Nptr head;
 
-    void _print(Nptr);
-    void _makeNode(T);
-    void _makeNode(T, int);
-    void _append(Nptr&, Nptr);
-    void _insert(Nptr&, Nptr, int);
-    void _getPointers();
-    void _reverse(Nptr&, Nptr, Nptr);
-    void _clear(Nptr&, Nptr&);
+    void _print(Nptr); // done
+    void _makeNode(T); // done
+    void _makeNode(T, int); // done
+    void _append(Nptr&, Nptr); // done
+    void _insert(Nptr&, Nptr, int); // done
+    void _clear(Nptr&); // done
+    bool _remove(T, Nptr&); // done
+    bool _del(int, Nptr&); // done
+    void _delNode(Nptr&); // done
+    void _insertRange(T[], int, int, Nptr&); // done
+    void _appendRange(T[], int); // done
+    void _appendNode(Nptr&, T); // done
+    void _insertNode(Nptr&, T);
+	void _insertHead(Nptr&, T);
+    void _reverse(Nptr&); // done
 public:
     List(): length(0), head(NULL) {}
-    int length;
-    void print();
-    void append(T);
-    void insert(T, int);
-    void appendRange(T[]);
-    void insertRange(T[], int);
-    bool remove(T);
-    bool remove(T, int);
-    void clear();
-    void reverse();
+    uint length; // done
+    void print(); // done
+    void append(T); // done
+    void insert(T, int); // done
+    void appendRange(T[], int); // done
+    void insertRange(T[], int, int); // done
+    bool remove(T); // done
+    bool del(int); // done
+    void clear(); // done
+    void reverse(); // done
 };
